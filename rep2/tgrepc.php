@@ -335,6 +335,8 @@ exit;
 
 function tgrep_search($query)
 {
+    require_once './findproxy.php';
+    return findproxy($query);
     global $_conf;
     $client = new HTTP_Client();
     $client->setDefaultHeader('User-Agent', 'p2-tgrep-client');
