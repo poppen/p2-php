@@ -57,17 +57,17 @@ function findproxy($query)
                 if(ereg('^/test/read\.cgi/([0-9A-Za-z]+)/([0-9]+)/.*', $urls['path'], $hits)){
                     $bbs = $hits[1];
                     $tkey = $hits[2];
-		}
+                }
                 $result['threads'][$n1] = new stdClass;
                 $result['threads'][$n1]->title = $name;
                 $result['threads'][$n1]->host = $urls['host'];
                 $result['threads'][$n1]->bbs = $bbs;
                 $result['threads'][$n1]->tkey = $tkey;
 //                $result['profile']['regex'] = '/(.*)/i';
-//		$keyword = explode(" ", $f2query_array['STR']);
-		$keyword = explode(" ", $query_array['q']);
+//              $keyword = explode(" ", $f2query_array['STR']);
+                $keyword = explode(" ", $query_array['q']);
                 $result['profile']['regex'] = '/(' . $keyword[0] .')/i';
-            
+
                 if(ereg('\(([0-9]+)\)', $dom2->find('text', 1)->plaintext, $hits)){
                     $result['threads'][$n1]->resnum = $hits[1];
                 }
@@ -80,7 +80,7 @@ function findproxy($query)
         }
     }
     $result['modified'] = $response['headers']['date'];
-    
+
     foreach($dom->find('font') as $element) {
         $name = mb_convert_encoding($element->find('text', 0)->plaintext,"CP932","EUC-JP");
         if(ereg('([0-9]+)ƒXƒŒ.*', $name, $hits)){
