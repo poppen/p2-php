@@ -31,7 +31,7 @@ function findproxy($query)
 
 //    print($query . ' -- > ' . $f2query);
 
-    $find2ch = 'http://find.2ch.net/index.php';
+    $find2ch = 'http://find.moritapo.jp/index.php';
 
     $client = new HTTP_Client;
     $client->setDefaultHeader('User-Agent', 'p2-tgrep-client');
